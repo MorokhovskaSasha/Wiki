@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <div class="center">
+        <h1 style="color:white; -webkit-text-stroke: 2px black; font-size: 60px;">All Pages</h1>
+    </div>
+
+
+    <div class="centerTable">
+    {% for page in pages %}
+        <a href="/wiki/{{ page|safe }}" class="elementList" >{{page}}</a>
+        <br/>
+    {% endfor %}
+    </div>
+{% endblock %}

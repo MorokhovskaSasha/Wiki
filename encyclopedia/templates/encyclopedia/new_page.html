@@ -1,0 +1,29 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+   Create new page
+{% endblock %}
+
+{% block body %}
+   {% if edit %}
+     <h1 style="color:white; font-size: 60px; text-align: center;">Edit page: {{pageHead}}</h1>
+     <form method="post"  style="text-align: center;">
+       {% csrf_token %}
+       {{form.pageHead}}<br>
+       <label for="Page text:">Page text:</label>
+       {{form.pageBody}}<br>
+       <button type="submit" class="button">Edit page</button>
+    </form>
+   {% else %}
+    <h1 style="color:white; font-size: 60px; text-align: center;">Create new page</h1>
+    <form method="post" style="text-align: center;">
+        {% csrf_token %}
+        <label for="Page title:" style="color:white; font-size: 24px;">Page title:</label>
+        {{form.pageHead}}<br>
+        <label for="Page text:" style="color:white; font-size: 24px;">Page text:</label>
+        {{form.pageBody}}<br>
+        <span>{{error}}</span><br>
+        <button class="btn btn-success" type="submit">Save page</button>
+    </form>
+    {% endif %}
+{% endblock %}
